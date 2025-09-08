@@ -12,6 +12,7 @@ export class OnGuard implements CanActivate {
     );
     const {
       query: { role },
+
     } = context.switchToHttp().getRequest<Request>();
     if (!requiredRoles) {
       return true;
@@ -19,6 +20,8 @@ export class OnGuard implements CanActivate {
     if (typeof role !== 'string') {
       return false;
     }
+
     return requiredRoles.includes(role);
+    
   }
 }

@@ -23,7 +23,9 @@ export class ApiKeyGuard implements CanActivate {
     if (!apiKey) {
       throw new UnauthorizedException('API key is missing in query');
     }
-
+    if (apiKey !== this.validApiKey) {
+      throw new UnauthorizedException('Invalid API key');
+    }
     return true;
   }
 }
